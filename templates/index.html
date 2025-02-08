@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <title>Ascii-art</title>
+</head>
+<body background="/static/ss.jpg" style="background-size: cover;">
+
+    <form  action="/ascii-art" method="POST">
+    <table align="center">
+        <tr style="height:50%;">
+                <td class="tables" style="background-color: #44B1F9;">
+                    <div>
+                    <h2>Standard</h2>
+                    <input type="radio" name="banner" class="radio" value="Standard"></input>
+                    <h2>Shadow</h2>
+                    <input type="radio" name="banner" class="radio" value="Shadow"></input>
+                    <h2>ThinkerToy</h2>
+                    <input type="radio" name="banner" class="radio" value="ThinkerToy"></input>
+                    </div>
+                </td>
+            </tr></br>
+            <td class="tables" style="background-color: #40FCC3;">
+                <textarea required name="text" id="text-input" maxlength="1000" placeholder="Type something..." rows="4" cols="50">{{.Text}}</textarea></br>
+                <button id="generate-button">Generate</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>;
