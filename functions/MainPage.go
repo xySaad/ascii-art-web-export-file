@@ -8,7 +8,7 @@ import (
 
 func MainPage(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		RenderPageNotFound(w)
+		RenderPageNotFound(w, http.StatusNotFound)
 		return
 	}
 	tmpl, err := template.ParseFiles("templates/index.html")

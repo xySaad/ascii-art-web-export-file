@@ -1,14 +1,15 @@
 package functions
 
 import (
-	"errors"
+	"net/http"
 	"strings"
 )
 
-func GeneratingTheAsciiArt(banner string, userText string) (string, int, error) {
+func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (string, bool) {
 	for i := 0; i < len(userText); i++ {
 		if !(userText[i] >= 32 && userText[i] <= 126) && !(strings.Contains(userText, "\r\n")) {
-			return "", 1, errors.New("⚠️ Warning: Input contains non printable ASCII characters")
+			RenderPageNotFound(w, http.StatusBadRequest)
+			return "", true
 		}
 	}
 	asciiArt := ""
@@ -19,7 +20,7 @@ func GeneratingTheAsciiArt(banner string, userText string) (string, int, error) 
 	} else if banner == "ThinkerToy" {
 		asciiArt = Mapping(banner, userText)
 	} else {
-		return "", 2, errors.New("⚠️ Warning: Please Select A Banner")
+		RenderPageNotFound(w, http.StatusBadRequest)
 	}
-	return asciiArt, 0, nil
+	return asciiArt , false
 }
