@@ -29,13 +29,16 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if check {
 		return
 	} else {
+		w.WriteHeader(http.StatusOK) // go sends 200 by default
 		tmpl, err := template.ParseFiles("templates/result.html")
 		if err != nil {
+			RenderPageNotFound(w, http.StatusInternalServerError)
 			fmt.Println("Error loading template:", err)
 			return
 		}
 		err = tmpl.Execute(w, asciiArt)
 		if err != nil {
+			RenderPageNotFound(w, http.StatusInternalServerError)
 			fmt.Println("Error executing template:", err)
 			return
 		}

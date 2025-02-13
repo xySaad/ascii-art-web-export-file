@@ -21,9 +21,10 @@ func RenderPageNotFound(w http.ResponseWriter, Status int) {
 
 	statusMessages := msgStatus{
 		Messages: map[int]string{
-			404: "We can't find the page you're looking for.",
-			500: "Please try again later.",
 			400: "Bad request.",
+			404: "We can't find the page you're looking for.",
+			405: "Method not allowed. Please check the request method.",
+			500: "Something went wrong on our side. Please try again later.",
 		},
 	}
 	data := map[string]interface{}{
