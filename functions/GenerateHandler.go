@@ -1,7 +1,6 @@
 package functions
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -11,7 +10,7 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		RenderPageNotFound(w, http.StatusMethodNotAllowed)
 		return
 	}
-	
+
 	banner := r.FormValue("banner")
 	userText := r.FormValue("text")
 	if banner == "" || userText == "" {
@@ -30,13 +29,11 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		tmpl, err := template.ParseFiles("templates/result.html")
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
-			fmt.Println("Error loading template:", err)
 			return
 		}
 		err = tmpl.Execute(w, asciiArt)
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
-			fmt.Println("Error executing template:", err)
 			return
 		}
 	}

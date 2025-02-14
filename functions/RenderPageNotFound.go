@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
-
 )
 
 func RenderPageNotFound(w http.ResponseWriter, Status int) {
@@ -29,11 +28,12 @@ func RenderPageNotFound(w http.ResponseWriter, Status int) {
 	}
 	data := map[string]interface{}{
 		"Status":        Status,
-		"RollBackerror":statusMessages.Messages[Status],
+		"RollBackerror": statusMessages.Messages[Status],
 	}
 	err = tmpl.Execute(w, data)
 	if err != nil {
 		http.Error(w, "Could not execute template", http.StatusInternalServerError)
 		fmt.Println("Error executing template:", err)
+		return
 	}
 }
