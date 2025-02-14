@@ -41,6 +41,7 @@ input[type="radio"] {
 #text-input {
     display: block;
     margin: 0 auto; 
+    resize: none;
     width: 40%;
     height: 40%;
     border: 2px solid black;

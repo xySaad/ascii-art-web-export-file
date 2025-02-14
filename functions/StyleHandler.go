@@ -3,15 +3,13 @@ package functions
 import (
 	"net/http"
 	"os"
-	"strings"
 )
 
 func StyleHandler(w http.ResponseWriter, r *http.Request) {
-	FilePath := strings.TrimPrefix(r.URL.Path, "/")
-	rr, err := os.Stat(FilePath)
+	rr, err := os.Stat(r.URL.Path[1:])
 	if err != nil || rr.IsDir() {
 		RenderPageNotFound(w, http.StatusNotFound)
 		return
 	}
-	http.StripPrefix("/static/", http.FileServer(http.Dir("static"))).ServeHTTP(w, r)
+	http.ServeFile(w, r, r.URL.Path[1:])
 }

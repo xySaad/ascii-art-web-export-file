@@ -21,6 +21,7 @@ func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string
 		asciiArt = Mapping(banner, userText)
 	} else {
 		RenderPageNotFound(w, http.StatusBadRequest)
+		return "", true
 	}
-	return asciiArt , false
+	return asciiArt, false
 }
