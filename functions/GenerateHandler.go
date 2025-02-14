@@ -6,15 +6,12 @@ import (
 	"net/http"
 )
 
-// StatusInternalServerError           = 500
-// StatusOK                   = 200
-// StatusMethodNotAllowed             = 405
-// StatusBadRequest                   = 400
 func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		RenderPageNotFound(w, http.StatusMethodNotAllowed)
 		return
 	}
+	
 	banner := r.FormValue("banner")
 	userText := r.FormValue("text")
 	if banner == "" || userText == "" {

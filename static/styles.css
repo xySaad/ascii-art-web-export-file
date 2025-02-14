@@ -5,22 +5,27 @@ table {
 }
 
 .tables{
-    border: 3px solid black;
+    border: 2px solid black;
+    border-radius: 10px;
 }
-
+h2 {
+    color: antiquewhite;
+}  
 
 #generate-button{
+    color: white;
     width: 33.05%;
     height: 16%;
     font-size: large;
-    border: 3px solid black;
-    background-color: white;
+    border-radius: 4px;
+    background-color: #ff595e;
     cursor :pointer;
     display: block;
-    margin: 0 auto; 
+    margin: 0 auto;
+    transition: 0.5s;
 }
-#generate-button:focus {
-    background-color: black;
+#generate-button:hover {
+    background-color:  #a12428;
     color: white;
 }
 
@@ -38,7 +43,8 @@ input[type="radio"] {
     margin: 0 auto; 
     width: 40%;
     height: 40%;
-    border: 3px solid black;
+    border: 2px solid black;
+    border-radius: 4px;
     text-align: center;
     font-size: large;
     font-style: italic;
