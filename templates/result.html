@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="/static/styles-result.css" />
     <title>Ascii-art</title>
 </head>
-<body background="/static/index-back-ground.jpg" style="background-size:cover;">
-    <div id="div1">
-        <a href="/">Go Back</a>
-    </div>    
-    <div id="div2">
-        <pre id="text-input" >{{.}}</pre>
-    </div>
+<body>
+    <div class="container">
+        <div class="ascii-output">
+          <pre>{{.}}</pre>
+        </div>
+        <div class="buttons">
+          <a href="/" class="btn">Go back</a>
+        </div>
+      </div>
 </body>
 </html>

@@ -6,6 +6,7 @@ The **Ascii-Art Web** project is a web-based GUI for creating ASCII art banners 
 ## Authors
 - [Aymen Azizi , Github.com/AymenOski]
 - [mohamed ndoumghar , Github.com/mndoumghar]
+- [abdrahman balouri , Github.com/--]
 
 ## Usage
 
