@@ -2,19 +2,12 @@ package functions
 
 import (
 	"net/http"
-	"strings"
 )
 
 func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (string, bool) {
 	if !isClean(userText) {
 		RenderPageNotFound(w, http.StatusBadRequest)
 		return "", true
-	}
-	for i := 0; i < len(userText); i++ {
-		if !(userText[i] >= 32 && userText[i] <= 126) && !(strings.Contains(userText, "\r\n")) {
-			RenderPageNotFound(w, http.StatusBadRequest)
-			return "", true
-		}
 	}
 	asciiArt := ""
 	if banner == "Standard" {

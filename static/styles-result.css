@@ -1,6 +1,4 @@
 body {
-    font-family: Arial;
-    background-color: #988686;
     margin: 0;
     padding: 0;
     display: flex;
@@ -10,39 +8,30 @@ body {
     background: url("/static/index-back-ground.jpg") center center fixed no-repeat;
     background-size: cover;
 }
-
 .container {
     background-color: transparent;
     padding: 30px;
     border-radius: 10px;
     width: 600px;
 }
-
 h1 {
     color: #411402;
     margin-bottom: 20px;
     font-size: 40px;
 }
-
 .ascii-output {
     background-color: whitesmoke;
-    border: 1px solid #ddd;
+    border: 1px solid #926e6e;
     border-radius: 5px;
     padding: 20px;
-    margin: 20px 0;
-    font-size: 16px;
-    font-family: "Courier New", Courier, monospace;
     overflow: auto;
     max-height: 300px;
-    text-align: center;
 }
-
 .buttons {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
 }
-
 .btn {
     background-color: #44B1F9;
     width: 200px;
@@ -56,32 +45,26 @@ h1 {
     text-align: center;
     border: 1px white solid;
 }
-
 .btn:hover {
     color: #40FCC3;
     background-color: #0776c0;
     border: 1px white solid;
 }
-
 @media (max-width: 700px) {
     .container {
         width: 400px;
     }
-
     h1 {
         font-size: 33px;
     }
 }
-
 @media (max-width: 470px) {
     .container {
         width: 280px;
     }
-
     h1 {
         font-size: 25px;
     }
-
     .btn {
         width: 100px;
         height: 30px;
