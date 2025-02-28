@@ -1,7 +1,6 @@
 package functions
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"os"
@@ -31,8 +30,7 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK) // go sends 200 by default
 		w.Header().Set("Content-Type", "text/plain")
 		w.Header().Set("Content-Disposition", "attachment; filename=asciiArt.txt")
-		w.Header().Set("Content-Type", strconv.Itoa(len(asciiArt)))
-		fmt.Println(strconv.Itoa(len(asciiArt)))
+		w.Header().Set("Content-Length", strconv.Itoa(len(asciiArt)))
 		tmpl, err := template.ParseFiles("templates/result.html")
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
