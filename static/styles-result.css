@@ -33,22 +33,22 @@ h1 {
     margin-top: 20px;
 }
 .btn {
-    background-color: #87939b;
+    background-color: #44B1F9;
     width: 200px;
     padding: 10px 20px;
     font-size: large;
     color: black;
     border: transparent;
-    border-radius: 10px;
+    border-radius: 30px;
     text-decoration: none;
     transition: 0.5s;
     text-align: center;
     border: 1px white solid;
 }
 .btn:hover {
-    color: #00ffb3;
-    background-color: #1592e6;
-    border: 1px rgb(34, 34, 34) solid;
+    color: #40FCC3;
+    background-color: #0776c0;
+    border: 1px white solid;
 }
 @media (max-width: 700px) {
     .container {
