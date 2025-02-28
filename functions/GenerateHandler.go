@@ -1,9 +1,11 @@
 package functions
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 func GenerateHandler(w http.ResponseWriter, r *http.Request) {
@@ -27,12 +29,16 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	} else {
 		w.WriteHeader(http.StatusOK) // go sends 200 by default
+		w.Header().Set("Content-Type", "text/plain")
+		w.Header().Set("Content-Disposition", "attachment; filename=asciiArt.txt")
+		w.Header().Set("Content-Type", strconv.Itoa(len(asciiArt)))
+		fmt.Println(strconv.Itoa(len(asciiArt)))
 		tmpl, err := template.ParseFiles("templates/result.html")
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
 			return
 		}
-		err = os.WriteFile("asciiArt.txt", []byte(asciiArt), 0o664)
+		err = os.WriteFile("./static/asciiArt.txt", []byte(asciiArt), 0o664)
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
 			return
