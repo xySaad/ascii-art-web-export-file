@@ -3,6 +3,7 @@ package functions
 import (
 	"html/template"
 	"net/http"
+	"os"
 )
 
 func GenerateHandler(w http.ResponseWriter, r *http.Request) {
@@ -27,6 +28,11 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		w.WriteHeader(http.StatusOK) // go sends 200 by default
 		tmpl, err := template.ParseFiles("templates/result.html")
+		if err != nil {
+			RenderPageNotFound(w, http.StatusInternalServerError)
+			return
+		}
+		err = os.WriteFile("asciiArt.txt", []byte(asciiArt), 0o664)
 		if err != nil {
 			RenderPageNotFound(w, http.StatusInternalServerError)
 			return

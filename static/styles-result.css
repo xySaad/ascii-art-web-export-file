@@ -1,4 +1,4 @@
-body {
+body{
     margin: 0;
     padding: 0;
     display: flex;
@@ -21,16 +21,23 @@ h1 {
 }
 .ascii-output {
     background-color: whitesmoke;
-    border: 1px solid #926e6e;
+    border: 1px rgb(0, 0, 0) solid;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     padding: 20px;
     overflow: auto;
     max-height: 300px;
+    transition: 0.5s;
+}
+.ascii-output:hover{
+    border: 1px white solid;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
 }
 .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .btn {
     background-color: #338282;
@@ -43,11 +50,24 @@ h1 {
     transition: 0.5s;
     text-align: center;
     border: 1px rgb(0, 0, 0) solid;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
+
 .btn:hover {
     color: #143a2e;
     background-color: #168bda;
     border: 1px white solid;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+#btn1{
+    width: 160px;
+
+}
+
+#downlaod{
+    border: #411402;
+    background-color: #168bda;
+    color: red;
 }
 @media (max-width: 700px) {
     .container {
