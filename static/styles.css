@@ -49,8 +49,10 @@ h2 {
 }
 
 #generate-button:hover {
-    background-color: #a12428;
-    color: white;
+    background-color: transparent;
+    border: 2px solid;
+    border-color: rgb(26, 163, 243);
+    color: rgb(26, 113, 243);
 }
 
 div {
@@ -65,6 +67,7 @@ input[type="radio"] {
 #text-input {
     margin-top: 20px;
     margin-bottom: 10px;
+    box-sizing: border-box;
     resize: none;
     width: 50%;
     height: 40%;
@@ -76,9 +79,10 @@ input[type="radio"] {
     color: gray;
 }
 .radio{
+    cursor: pointer;
     display: flex;
     gap: 20px;
-    align-items: center
+    align-items: center;
 }
 
 @media (max-width:600px){
