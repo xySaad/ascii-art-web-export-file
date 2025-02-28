@@ -6,7 +6,7 @@ import (
 
 func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (string, bool) {
 	if !isClean(userText) {
-		RenderErrPage(w, http.StatusBadRequest)
+		RenderPageNotFound(w, http.StatusBadRequest)
 		return "", true
 	}
 	asciiArt := ""
@@ -17,7 +17,7 @@ func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string
 	} else if banner == "ThinkerToy" {
 		asciiArt = Mapping(banner, userText)
 	} else {
-		RenderErrPage(w, http.StatusBadRequest)
+		RenderPageNotFound(w, http.StatusBadRequest)
 		return "", true
 	}
 	return asciiArt, false
