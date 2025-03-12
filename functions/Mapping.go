@@ -23,12 +23,13 @@ func Mapping(banner string, userText string) string {
 		os.Exit(1)
 	}
 	defer content.Close()
-	ascii_map := make(map[string]int)
-	c := 1
-	for i := 32; i <= 126; i++ {
-		ascii_map[string(rune(i))] = c
-		c += 9
+	ascii_map := make(map[int32]int32)
+	var i int32 = 32
+
+	for ; i <= 126; i++ {
+		ascii_map[i] = ((i - 32) * 9) + 1
 	}
+
 	var Lines []string
 	scanner := bufio.NewScanner(content)
 	for scanner.Scan() {
@@ -38,5 +39,6 @@ func Mapping(banner string, userText string) string {
 	for _, val := range intoSlice {
 		result += Printing(val, Lines, ascii_map)
 	}
+
 	return result
 }

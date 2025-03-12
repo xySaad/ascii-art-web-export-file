@@ -2,25 +2,21 @@ package functions
 
 import (
 	"net/http"
+	"slices"
 )
 
-func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (string, bool) {
+func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (result string, success bool) {
 	if !isClean(userText) {
-		RenderPageNotFound(w, http.StatusBadRequest)
-		return "", true
+		return
 	}
-	asciiArt := ""
-	if banner == "Standard" {
-		asciiArt = Mapping(banner, userText)
-	} else if banner == "Shadow" {
-		asciiArt = Mapping(banner, userText)
-	} else if banner == "ThinkerToy" {
-		asciiArt = Mapping(banner, userText)
-	} else {
-		RenderPageNotFound(w, http.StatusBadRequest)
-		return "", true
+
+	var banners = []string{"Standard", "Shadow", "ThinkerToy"}
+
+	if !slices.Contains(banners, banner) {
+		return
 	}
-	return asciiArt, false
+
+	return Mapping(banner, userText), true
 }
 
 func isClean(str string) bool {

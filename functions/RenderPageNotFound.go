@@ -6,10 +6,10 @@ import (
 	"net/http"
 )
 
-func RenderPageNotFound(w http.ResponseWriter, Status int) {
+func RenderError(w http.ResponseWriter, Status int) {
 	tmpl, err := template.ParseFiles("templates/page-not-found.html")
 	if err != nil {
-		http.Error(w, "Could not load template", http.StatusInternalServerError)
+		http.Error(w, "Could not load template", Status)
 		fmt.Println("Error parsing template:", err)
 		return
 	}
@@ -32,7 +32,7 @@ func RenderPageNotFound(w http.ResponseWriter, Status int) {
 	}
 	err = tmpl.Execute(w, data)
 	if err != nil {
-		http.Error(w, "Could not execute template", http.StatusInternalServerError)
+		http.Error(w, "Could not execute template", Status)
 		fmt.Println("Error executing template:", err)
 		return
 	}
