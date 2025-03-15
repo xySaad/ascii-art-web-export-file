@@ -13,6 +13,8 @@ func main() {
 	http.HandleFunc("/", functions.MainPage)
 	http.HandleFunc("/static/", functions.StyleHandler)
 	http.HandleFunc("/ascii-art", functions.GenerateHandler)
+	http.HandleFunc("/banners", functions.Banners)
+
 	fmt.Println("Server is running at http://localhost:8080")
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		fmt.Println(err)

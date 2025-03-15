@@ -3,25 +3,22 @@ package functions
 import (
 	"bufio"
 	"fmt"
+	"net/http"
 	"os"
 	"strings"
 )
 
-func Mapping(banner string, userText string) string {
+func Mapping(banner string, userText string) (result string, status int) {
 	var content *os.File
 	var err error
-	result := ""
-	if banner == "Standard" {
-		content, err = os.Open("standard.txt")
-	} else if banner == "Shadow" {
-		content, err = os.Open("shadow.txt")
-	} else if banner == "ThinkerToy" {
-		content, err = os.Open("thinkertoy.txt")
-	}
+
+	content, err = os.Open("./banners/" + banner + ".txt")
 	if err != nil {
 		fmt.Printf("Error : %v\n", err)
-		os.Exit(1)
+		status = http.StatusInternalServerError
+		return
 	}
+
 	defer content.Close()
 	ascii_map := make(map[int32]int32)
 	var i int32 = 32
@@ -40,5 +37,5 @@ func Mapping(banner string, userText string) string {
 		result += Printing(val, Lines, ascii_map)
 	}
 
-	return result
+	return result, http.StatusOK
 }

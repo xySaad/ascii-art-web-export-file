@@ -25,10 +25,10 @@ func GenerateHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	asciiArt, success := GeneratingTheAsciiArt(w, banner, userText)
+	asciiArt, status := GeneratingTheAsciiArt(w, banner, userText)
 
-	if !success {
-		RenderError(w, http.StatusBadRequest)
+	if status != 200 {
+		RenderError(w, status)
 		return
 	}
 

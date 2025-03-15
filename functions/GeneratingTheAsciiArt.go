@@ -5,18 +5,22 @@ import (
 	"slices"
 )
 
-func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (result string, success bool) {
+func GeneratingTheAsciiArt(w http.ResponseWriter, banner string, userText string) (result string, status int) {
 	if !isClean(userText) {
+		status = http.StatusBadRequest
 		return
 	}
 
-	var banners = []string{"Standard", "Shadow", "ThinkerToy"}
+	banners, status := ListBanners()
+	if status != 200 {
+		return
+	}
 
 	if !slices.Contains(banners, banner) {
+		status = http.StatusBadRequest
 		return
 	}
-
-	return Mapping(banner, userText), true
+	return Mapping(banner, userText)
 }
 
 func isClean(str string) bool {
